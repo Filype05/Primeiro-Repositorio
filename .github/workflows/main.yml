@@ -1,13 +1,19 @@
-name: Workflow Evento
+name: Workflow matriz
 on:
-  push:
+  workflow_dispatch:
 jobs:
-  todos:
-    runs-on: ubuntu-latest
+  exemplo-fluxo-execucao:
+    strategy:
+      matrix:
+        versao: [16,18,20]
+        plataforma: ["windows", "ubuntu"]
+    runs-on: "${{ matrix.plataforma }}-latest"
     steps:
-      - name: Execução em Main
-        if: ${{ github.ref == 'refs/heads/main' }}
-        run: ech "Execução em Main"
-      - name: Envio de Erros      ## <------
-        if: ${{ failure() }}
-        run: echo "Envio de erro"
+      - name: Instalação do node
+        uses:  actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.versao }}
+      - name: Exibição da versão e da plataforma
+        run: |
+          node --version
+          echo ${{ runner.os }}
