@@ -14,5 +14,4 @@ jobs:
     CD:
       needs: [CI]
       uses: Filype05/Primeiro-Repositorio/.github/workflows/cd.yml@main
-      with:
-        ambiente: homologacao
+      secrets: inherit
