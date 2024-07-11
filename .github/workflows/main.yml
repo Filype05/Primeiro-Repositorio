@@ -14,4 +14,5 @@ jobs:
     CD:
       needs: [CI]
       uses: Filype05/Primeiro-Repositorio/.github/workflows/cd.yml@main
-        ## Podemos mencionar branch ou tag, assim versionando o CD.
+      with:
+        ambiente: homologacao
