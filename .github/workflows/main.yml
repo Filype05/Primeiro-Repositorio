@@ -13,4 +13,4 @@ jobs:
               run: echo "Publicação da Relase final"
     CD:
       needs: [CI]
-      uses: Filype05/primeira-pipeline-cicd/.github/workflows/main.yml@main
+      uses: Filype05/Primeiro-Repositorio/.github/workflows/cd.yml@main
