@@ -1,15 +1,17 @@
-name: Workflow concorrencia
-run-name: Workflow Concorrencia ${{ github.run_number }}
-on:
-  workflow_dispatch:
-concurrency:
-  group: pipeline-aula
-  cancel-in-progress: true
+name: CI/CD Fake
+on: 
+    workflow_dispatch:  
 jobs:
-  exemplo-fluxo-execucao-01:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Execução do job teste
-        run: |
-          sleep 50;
-          echo "Action executada job 01"
+    CI:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Build de Imagem Docker
+              run: echo "Execução do comando de docker build"
+            - name: Execução de Testes de Software
+              run: echo "Aqui eu executo o teste de software"
+            - name: Publicando a Release
+              run: echo "Publicação da Relase final"
+    CD:
+      needs: [CI]
+      uses: Filype05/Primeiro-Repositorio/.github/workflows/cd.yml@main
+        ## Podemos mencionar branch ou tag, assim versionando o CD.
