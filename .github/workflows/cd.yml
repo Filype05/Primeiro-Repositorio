@@ -1,11 +1,10 @@
 name: Deploy Fake
 on:
-    repository_dispatch:
-        types:
-        - deploy-remoto
+    workflow_dispatch:
 jobs:
     CD:
         runs-on: ubuntu-latest
+        environment: homologacao
         steps:
             - name: Deploy no ambiente
-              run: echo "Executando o deploy no ambiente de ${{ github.event.client_payload.ambiente }}"
+              run: echo "Executando o deploy no ambiente de ${{ vars.AMBIENTE_DEPLOY }}"
