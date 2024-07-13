@@ -17,7 +17,7 @@ jobs:
           echo "::group:: Grupo de Logs"
           echo "Informação XPTO 1"
           echo "Informação XPTO 2"
-          echod "Informação XPTO 3"
+          echo "Informação XPTO 3"
           echo "Informação XPTO 4"
           echo "Esse workflow foi disparado por ${{ github.actor }}"
           echo "::endgroup::"
