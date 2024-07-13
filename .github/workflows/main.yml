@@ -1,16 +1,23 @@
-name: CI/CD Fake
-on: 
-    workflow_dispatch:  
+name: CI
+on:
+  workflow_dispatch:
+
 jobs:
-    CI:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Build de Imagem Docker
-              run: echo "Execução do comando de docker build"
-            - name: Execução de Testes de Software
-              run: echo "Aqui eu executo o teste de software"
-            - name: Publicando a Release
-              run: echo "Publicação da Relase final"
-    CD:
-      needs: [CI]
-      uses: Filype05/Primeiro-Repositorio/.github/workflows/cd.yml@main
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Adicionando mensagens de log
+        run: |
+          echo "::debug:: Mensagem de Log Debug"
+          echo "::warning:: Mensagem de Log Warning"
+          echo "::notice:: Mensagem de Log Notice"
+          echo "::error:: Mensagem de Log Error executado por ${{ github.actor }}"
+      - name: Adicionando Logs agrupados
+        run: |
+          echo "::group:: Grupo de Logs"
+          echo "Informação XPTO 1"
+          echo "Informação XPTO 2"
+          echo "Informação XPTO 3"
+          echo "Informação XPTO 4"
+          echo "Esse workflow foi disparado por ${{ github.actor }}"
+          echo "::endgroup::"
