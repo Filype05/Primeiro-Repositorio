@@ -1,2 +1,3 @@
 # Primeiro-Repositorio
-hora de ir
+
+![example workflow](https://github.com/Filype05/Primeiro-Repositorio/actions/workflows/main.yml/badge.svg)
