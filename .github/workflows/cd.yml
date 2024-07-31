@@ -1,10 +1,17 @@
-name: Deploy Fake
+name: Teste Container
 on:
     workflow_dispatch:
 jobs:
-    CD:
-        runs-on: ubuntu-latest
-        environment: homologacao
-        steps:
-            - name: Deploy no ambiente
-              run: echo "Executando o deploy no ambiente de ${{ vars.AMBIENTE_DEPLOY }}"
+  build-test:
+      runs-on: ubuntu-latest
+      container:
+        image: python:3.10.14-alpine3.20  ## <- Nome da imagem dockerhub
+      steps:
+          - name: Checkout
+            uses: actions/checkout@v4
+          - name: Verificar a versão do Python
+            run: python3 --version
+          - name: Instalação do curl Alpine
+            run: apk add curl
+          - name: Executando o curl
+            run: curl https://www.google.com
